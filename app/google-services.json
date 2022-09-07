@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "121516445079",
+    "firebase_url": "https://crudfirebase-120be-default-rtdb.firebaseio.com",
+    "project_id": "crudfirebase-120be",
+    "storage_bucket": "crudfirebase-120be.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:121516445079:android:07649dc8ea0e252b0588d2",
+        "android_client_info": {
+          "package_name": "com.mexico.quetzal.crudfirebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "121516445079-k27h6n2usde4bcenhs2urbm1r9gkjbnn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mexico.quetzal.crudfirebase",
+            "certificate_hash": "e4d77525e9ae9e1d7bfe6d947bb39967b0352eb9"
+          }
+        },
+        {
+          "client_id": "121516445079-p7tibtsof8p20jkh8f5pg8p9v9aqs6f7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4G9ALWeQVTokm0w4gPOMc1oJvtb8_s2M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "121516445079-p7tibtsof8p20jkh8f5pg8p9v9aqs6f7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
