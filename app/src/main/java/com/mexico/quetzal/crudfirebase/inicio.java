@@ -2,6 +2,9 @@ package com.mexico.quetzal.crudfirebase;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -51,6 +54,34 @@ public class inicio extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        lista.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                Eliminar(position);
+                return true;
+            }
+        });
+    }
+
+    private void Eliminar(int position){
+        final AlertDialog.Builder d = new AlertDialog.Builder(inicio.this);
+        d.setTitle("Eliminar");
+        d.setMessage("Se eliminara a "+personaList.get(position).toString()+" de la base de datos");
+        d.setCancelable(false);
+        d.setPositiveButton("Eliminar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                databaseReference.child("Persona").child(personaList.get(position).getUid()).removeValue();
+            }
+        });
+        d.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        d.show();
     }
 
     private void listarDatos(){
@@ -91,10 +122,6 @@ public class inicio extends AppCompatActivity {
             case R.id.add:
                 Intent i= new Intent(getApplicationContext(), insertar.class);
                 startActivity(i);
-                break;
-            case R.id.save:
-                Intent j = new Intent(getApplicationContext(), Actualizar.class);
-                startActivity(j);
                 break;
             default: break;
         }
