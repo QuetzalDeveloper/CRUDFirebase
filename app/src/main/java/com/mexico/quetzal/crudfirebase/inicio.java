@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import com.google.firebase.FirebaseApp;
@@ -36,6 +38,19 @@ public class inicio extends AppCompatActivity {
 
         InicializarFirebase();
         listarDatos();
+
+        lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent i= new Intent(getApplicationContext(), Actualizar.class);
+                i.putExtra("uid", personaList.get(position).getUid());
+                i.putExtra("correo", personaList.get(position).getCorreo());
+                i.putExtra("nombre", personaList.get(position).getNombre());
+                i.putExtra("apellidos", personaList.get(position).getApellidos());
+                i.putExtra("password", personaList.get(position).getPassword());
+                startActivity(i);
+            }
+        });
     }
 
     private void listarDatos(){
@@ -77,8 +92,20 @@ public class inicio extends AppCompatActivity {
                 Intent i= new Intent(getApplicationContext(), insertar.class);
                 startActivity(i);
                 break;
+            case R.id.save:
+                Intent j = new Intent(getApplicationContext(), Actualizar.class);
+                startActivity(j);
+                break;
             default: break;
         }
         return true;
+    }
+
+
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        listarDatos();
     }
 }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".insertar">
+    tools:context=".Actualizar">
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -72,10 +72,10 @@
     </LinearLayout>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/guardar"
+        android:id="@+id/actualizar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="Guardar"
+        android:text="Actualizar"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
         android:textSize="18sp"

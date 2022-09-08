@@ -15,10 +15,11 @@ import com.mexico.quetzal.crudfirebase.Modelos.Persona;
 
 import java.util.UUID;
 
-public class insertar extends AppCompatActivity {
+public class Actualizar extends AppCompatActivity {
 
     private TextInputEditText correo, nombre, apellidos, pass;
     private MaterialButton guardar;
+    private String uid;
     //1. Declaramos variables de Firebase
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
@@ -26,13 +27,20 @@ public class insertar extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_insertar);
+        setContentView(R.layout.activity_actualizar);
 
         correo = findViewById(R.id.correo);
         nombre = findViewById(R.id.nombre);
         apellidos = findViewById(R.id.apellidos);
         pass = findViewById(R.id.password);
-        guardar = findViewById(R.id.guardar);
+        guardar = findViewById(R.id.actualizar);
+
+        uid = getIntent().getStringExtra("uid");
+        correo.setText(getIntent().getStringExtra("correo"));
+        nombre.setText(getIntent().getStringExtra("nombre"));
+        apellidos.setText(getIntent().getStringExtra("apellidos"));
+        pass.setText(getIntent().getStringExtra("password"));
+
         //2. Inicializamos las variables de Firebase
         InicializarFirebase();
 
@@ -57,7 +65,7 @@ public class insertar extends AppCompatActivity {
         String contra = pass.getText().toString();
 
         Persona p = new Persona();
-        p.setUid(UUID.randomUUID().toString());
+        p.setUid(uid);
         p.setNombre(name);
         p.setApellidos(last);
         p.setCorreo(mail);
@@ -65,7 +73,7 @@ public class insertar extends AppCompatActivity {
 
         databaseReference.child("Persona").child(p.getUid()).setValue(p);
 
-        Toast.makeText(getApplicationContext(), "Persona guardada", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Persona actualizada", Toast.LENGTH_SHORT).show();
         this.finish();
     }
 }
